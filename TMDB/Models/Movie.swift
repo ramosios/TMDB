@@ -17,6 +17,6 @@ struct Movie: Identifiable, Decodable {
     }
 }
 
-struct MovieResponse: Decodable {
+struct MovieSearchResponse: Decodable {
     let results: [Movie]
 }

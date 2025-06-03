@@ -1,24 +1,19 @@
 import Foundation
 
 @MainActor
-final class MovieListViewModel: ObservableObject {
+class MovieGPTViewModel: ObservableObject {
     @Published var movies: [Movie] = []
     @Published var isLoading = false
-    @Published var errorMessage: String?
+    private let openAIService = OpenAIService()
+    private let tmdbService = TMDBService()
 
-    private let movieService: MovieService
-
-    init(movieService: MovieService) {
-        self.movieService = movieService
-    }
-
-    func fetchMovies() async {
+    func getRecommendations(for prompt: String) async {
         isLoading = true
-        errorMessage = nil
         do {
-            movies = try await movieService.fetchPopularMovies()
+            let titles = try await openAIService.fetchMovieTitles(prompt: prompt)
+            self.movies = try await tmdbService.fetchMovies(for: titles)
         } catch {
-            errorMessage = error.localizedDescription
+            print("Error: \(error)")
         }
         isLoading = false
     }
