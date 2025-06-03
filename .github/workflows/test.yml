@@ -1,0 +1,28 @@
+name: Run iOS Unit Tests
+
+on:
+  pull_request:
+    branches:
+      - main   # Or your default branch
+
+jobs:
+  test:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2.2'
+
+      - name: Install Bundler and Gems
+        run: |
+          gem install bundler
+          bundle config set path 'vendor/bundle'
+          bundle install
+
+      - name: Run Unit Tests with Fastlane
+        run: bundle exec fastlane test

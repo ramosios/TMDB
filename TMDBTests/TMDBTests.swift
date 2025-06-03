@@ -6,12 +6,13 @@
 //
 
 import Testing
+import XCTest
 @testable import TMDB
 
 struct TMDBTests {
 
     @Test func example() async throws {
-        // Write your test here and use APIs like `#expect(...)` to check expected conditions.
+        XCTAssertTrue(2+2==4)
     }
 
 }
