@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 77;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXContainerItemProxy section */
@@ -30,21 +30,9 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		C164C20A2DD869BD006F73FA /* TMDB */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = TMDB;
-			sourceTree = "<group>";
-		};
-		C164C2182DD869BE006F73FA /* TMDBTests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = TMDBTests;
-			sourceTree = "<group>";
-		};
-		C164C2222DD869BE006F73FA /* TMDBUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = TMDBUITests;
-			sourceTree = "<group>";
-		};
+		C164C20A2DD869BD006F73FA /* TMDB */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = TMDB; sourceTree = "<group>"; };
+		C164C2182DD869BE006F73FA /* TMDBTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = TMDBTests; sourceTree = "<group>"; };
+		C164C2222DD869BE006F73FA /* TMDBUITests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = TMDBUITests; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,6 +175,7 @@
 				};
 			};
 			buildConfigurationList = C164C2032DD869BD006F73FA /* Build configuration list for PBXProject "TMDB" */;
+			compatibilityVersion = "Xcode 15.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -195,7 +184,6 @@
 			);
 			mainGroup = C164C1FF2DD869BD006F73FA;
 			minimizedProjectReferenceProxies = 1;
-			preferredProjectObjectVersion = 77;
 			productRefGroup = C164C2092DD869BD006F73FA /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
