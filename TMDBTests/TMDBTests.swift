@@ -4,13 +4,14 @@
 //
 //  Created by Jorge Ramos on 17/05/25.
 //
-import XCTest
+
 import Testing
 @testable import TMDB
 
 struct TMDBTests {
 
-    func testExample() throws {
-        XCTAssertEqual(2+2,4)
+    @Test func example() async throws {
+        // Write your test here and use APIs like `#expect(...)` to check expected conditions.
     }
+
 }
