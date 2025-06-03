@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 70;
+	objectVersion = 90;
 	objects = {
 
 /* Begin PBXContainerItemProxy section */
@@ -30,32 +30,38 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		C164C20A2DD869BD006F73FA /* TMDB */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = TMDB; sourceTree = "<group>"; };
-		C164C2182DD869BE006F73FA /* TMDBTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = TMDBTests; sourceTree = "<group>"; };
-		C164C2222DD869BE006F73FA /* TMDBUITests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = TMDBUITests; sourceTree = "<group>"; };
+		C164C20A2DD869BD006F73FA /* TMDB */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = TMDB;
+			sourceTree = "<group>";
+		};
+		C164C2182DD869BE006F73FA /* TMDBTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = TMDBTests;
+			sourceTree = "<group>";
+		};
+		C164C2222DD869BE006F73FA /* TMDBUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = TMDBUITests;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		C164C2052DD869BD006F73FA /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		C164C2122DD869BE006F73FA /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		C164C21C2DD869BE006F73FA /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
@@ -93,14 +99,10 @@
 			);
 			buildRules = (
 			);
-			dependencies = (
-			);
 			fileSystemSynchronizedGroups = (
 				C164C20A2DD869BD006F73FA /* TMDB */,
 			);
 			name = TMDB;
-			packageProductDependencies = (
-			);
 			productName = TMDB;
 			productReference = C164C2082DD869BD006F73FA /* TMDB.app */;
 			productType = "com.apple.product-type.application";
@@ -122,8 +124,6 @@
 				C164C2182DD869BE006F73FA /* TMDBTests */,
 			);
 			name = TMDBTests;
-			packageProductDependencies = (
-			);
 			productName = TMDBTests;
 			productReference = C164C2152DD869BE006F73FA /* TMDBTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -145,8 +145,6 @@
 				C164C2222DD869BE006F73FA /* TMDBUITests */,
 			);
 			name = TMDBUITests;
-			packageProductDependencies = (
-			);
 			productName = TMDBUITests;
 			productReference = C164C21F2DD869BE006F73FA /* TMDBUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
@@ -175,7 +173,6 @@
 				};
 			};
 			buildConfigurationList = C164C2032DD869BD006F73FA /* Build configuration list for PBXProject "TMDB" */;
-			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -184,6 +181,7 @@
 			);
 			mainGroup = C164C1FF2DD869BD006F73FA;
 			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 90;
 			productRefGroup = C164C2092DD869BD006F73FA /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -198,48 +196,36 @@
 /* Begin PBXResourcesBuildPhase section */
 		C164C2062DD869BD006F73FA /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		C164C2132DD869BE006F73FA /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		C164C21D2DD869BE006F73FA /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C164C2042DD869BD006F73FA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		C164C2112DD869BE006F73FA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		C164C21B2DD869BE006F73FA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
@@ -257,7 +243,7 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		C164C2272DD869BE006F73FA /* Debug */ = {
+		C164C2272DD869BE006F73FA /* Debug configuration for PBXProject "TMDB" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -320,7 +306,7 @@
 			};
 			name = Debug;
 		};
-		C164C2282DD869BE006F73FA /* Release */ = {
+		C164C2282DD869BE006F73FA /* Release configuration for PBXProject "TMDB" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -376,7 +362,7 @@
 			};
 			name = Release;
 		};
-		C164C22A2DD869BE006F73FA /* Debug */ = {
+		C164C22A2DD869BE006F73FA /* Debug configuration for PBXNativeTarget "TMDB" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -403,7 +389,7 @@
 			};
 			name = Debug;
 		};
-		C164C22B2DD869BE006F73FA /* Release */ = {
+		C164C22B2DD869BE006F73FA /* Release configuration for PBXNativeTarget "TMDB" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -430,7 +416,7 @@
 			};
 			name = Release;
 		};
-		C164C22D2DD869BE006F73FA /* Debug */ = {
+		C164C22D2DD869BE006F73FA /* Debug configuration for PBXNativeTarget "TMDBTests" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -448,7 +434,7 @@
 			};
 			name = Debug;
 		};
-		C164C22E2DD869BE006F73FA /* Release */ = {
+		C164C22E2DD869BE006F73FA /* Release configuration for PBXNativeTarget "TMDBTests" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -466,7 +452,7 @@
 			};
 			name = Release;
 		};
-		C164C2302DD869BE006F73FA /* Debug */ = {
+		C164C2302DD869BE006F73FA /* Debug configuration for PBXNativeTarget "TMDBUITests" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -482,7 +468,7 @@
 			};
 			name = Debug;
 		};
-		C164C2312DD869BE006F73FA /* Release */ = {
+		C164C2312DD869BE006F73FA /* Release configuration for PBXNativeTarget "TMDBUITests" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -504,37 +490,33 @@
 		C164C2032DD869BD006F73FA /* Build configuration list for PBXProject "TMDB" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C164C2272DD869BE006F73FA /* Debug */,
-				C164C2282DD869BE006F73FA /* Release */,
+				C164C2272DD869BE006F73FA /* Debug configuration for PBXProject "TMDB" */,
+				C164C2282DD869BE006F73FA /* Release configuration for PBXProject "TMDB" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 		C164C2292DD869BE006F73FA /* Build configuration list for PBXNativeTarget "TMDB" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C164C22A2DD869BE006F73FA /* Debug */,
-				C164C22B2DD869BE006F73FA /* Release */,
+				C164C22A2DD869BE006F73FA /* Debug configuration for PBXNativeTarget "TMDB" */,
+				C164C22B2DD869BE006F73FA /* Release configuration for PBXNativeTarget "TMDB" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 		C164C22C2DD869BE006F73FA /* Build configuration list for PBXNativeTarget "TMDBTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C164C22D2DD869BE006F73FA /* Debug */,
-				C164C22E2DD869BE006F73FA /* Release */,
+				C164C22D2DD869BE006F73FA /* Debug configuration for PBXNativeTarget "TMDBTests" */,
+				C164C22E2DD869BE006F73FA /* Release configuration for PBXNativeTarget "TMDBTests" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 		C164C22F2DD869BE006F73FA /* Build configuration list for PBXNativeTarget "TMDBUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C164C2302DD869BE006F73FA /* Debug */,
-				C164C2312DD869BE006F73FA /* Release */,
+				C164C2302DD869BE006F73FA /* Debug configuration for PBXNativeTarget "TMDBUITests" */,
+				C164C2312DD869BE006F73FA /* Release configuration for PBXNativeTarget "TMDBUITests" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
