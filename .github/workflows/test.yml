@@ -7,7 +7,7 @@ on:
 
 jobs:
   test:
-    runs-on: macos-latest
+    runs-on: macos-14
 
     steps:
       - name: Checkout code
@@ -24,13 +24,14 @@ jobs:
           bundle config set path 'vendor/bundle'
           bundle install
 
-      - name: List Xcode apps (debug)
-        run: ls /Applications | grep Xcode
+      - name: List installed Xcode apps
+        run: ls -l /Applications | grep Xcode
 
-      - name: Set up Xcode 16.3
-        uses: maxim-lobanov/setup-xcode@v2
-        with:
-          xcode-version: '16.3'
+      - name: Show default Xcode version
+        run: xcodebuild -version
+
+      - name: Select Xcode 16.3
+        run: sudo xcode-select -s /Applications/Xcode_16.3.app
 
       - name: Run Unit Tests with Fastlane
         env:
