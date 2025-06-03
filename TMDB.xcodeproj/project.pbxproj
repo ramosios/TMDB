@@ -175,7 +175,7 @@
 				};
 			};
 			buildConfigurationList = C164C2032DD869BD006F73FA /* Build configuration list for PBXProject "TMDB" */;
-			compatibilityVersion = "Xcode 15.0";
+			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
