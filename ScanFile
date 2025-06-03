@@ -1,7 +1,7 @@
 # For more information about this configuration visit
 # https://github.com/fastlane/scan#scanfile
 
-workspace "TMDB.xcodeproj"
+workspace "TMDB.xcodeproj/project.xcworkspace"
 scheme "TMDB"
 sdk "iphonesimulator"
 device "iPhone 11"

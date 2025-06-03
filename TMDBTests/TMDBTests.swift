@@ -8,7 +8,7 @@ import XCTest
 import Testing
 @testable import TMDB
 
-final class TMDBTests: XCTestCase {
+struct TMDBTests {
 
     func testExample() throws {
         XCTAssertEqual(2+2,4)
