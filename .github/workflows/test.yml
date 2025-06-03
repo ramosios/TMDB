@@ -24,8 +24,13 @@ jobs:
           bundle config set path 'vendor/bundle'
           bundle install
 
-      - name: Select Xcode 16.3
-        run: xcode-select -s /Applications/Xcode.app
+      - name: List Xcode apps (debug)
+        run: ls /Applications | grep Xcode
+
+      - name: Set up Xcode 16.3
+        uses: maxim-lobanov/setup-xcode@v2
+        with:
+          xcode-version: '16.3'
 
       - name: Run Unit Tests with Fastlane
         env:
