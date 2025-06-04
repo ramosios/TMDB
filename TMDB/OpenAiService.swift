@@ -40,7 +40,7 @@ struct OpenAIService {
 
         let body: [String: Any] = [
             "model": "gpt-3.5-turbo",
-            "messages": [["role": "user", "content": "Recommend 5 movies for: \(prompt)"]],
+            "messages": [["role": "user", "content": "Only respond with movie title for prompt: \(prompt)"]],
             "temperature": 0.7
         ]
 

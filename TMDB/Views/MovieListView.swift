@@ -6,18 +6,35 @@ struct MovieListView: View {
 
     var body: some View {
         NavigationView {
-            VStack {
-                TextEditor(text: $prompt)
-                    .frame(height: 100)
-                    .border(Color.gray)
-                    .padding()
+            VStack(spacing: 20) {
+                VStack(alignment: .leading) {
+                    Text("Describe the type of movies you want:")
+                        .font(.headline)
+                        .padding(.horizontal)
 
-                Button("Get Recommendations") {
+                    TextEditor(text: $prompt)
+                        .frame(height: 120)
+                        .padding(8)
+                        .background(Color(.secondarySystemBackground))
+                        .cornerRadius(12)
+                        .overlay(RoundedRectangle(cornerRadius: 12).stroke(Color.gray.opacity(0.3)))
+                        .padding(.horizontal)
+                }
+
+                Button(action: {
                     Task {
                         await viewModel.getRecommendations(for: prompt)
                     }
+                }) {
+                    Text("🎬 Get Recommendations")
+                        .font(.headline)
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(Color.blue)
+                        .foregroundColor(.white)
+                        .cornerRadius(12)
+                        .padding(.horizontal)
                 }
-                .padding()
 
                 if let error = viewModel.errorMessage {
                     Text("⚠️ \(error)")
@@ -27,14 +44,16 @@ struct MovieListView: View {
                 }
 
                 if viewModel.isLoading {
-                    ProgressView("Loading...")
+                    ProgressView("Fetching movie magic...")
                         .padding()
                 } else {
-                    MovieListSection(movies: viewModel.movies)
+                    List(viewModel.movies) { movie in
+                        MovieRowView(movie: movie)
+                    }
+                    .listStyle(PlainListStyle())
                 }
             }
-            .navigationTitle("MovieGPT")
-            .padding()
+            .navigationTitle("🍿 MovieGPT")
         }
     }
 }
