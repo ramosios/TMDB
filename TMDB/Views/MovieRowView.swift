@@ -1,7 +1,9 @@
+import Foundation
 import SwiftUI
 
 struct MovieRowView: View {
     let movie: Movie
+    @EnvironmentObject var favorites: FavoritesViewModel
 
     var body: some View {
         HStack(alignment: .top) {
@@ -18,11 +20,29 @@ struct MovieRowView: View {
                 .cornerRadius(8)
             }
 
-            VStack(alignment: .leading) {
-                Text(movie.title).font(.headline)
-                Text(movie.overview).font(.subheadline).lineLimit(3)
+            VStack(alignment: .leading, spacing: 4) {
+                HStack {
+                    Text(movie.title).font(.headline)
+                    Spacer()
+                    Button(action: {
+                        if favorites.isFavorite(movie) {
+                            favorites.remove(movie)
+                        } else {
+                            favorites.add(movie)
+                        }
+                    }) {
+                        Image(systemName: favorites.isFavorite(movie) ? "heart.fill" : "heart")
+                            .foregroundColor(.red)
+                    }
+                    .buttonStyle(BorderlessButtonStyle())
+                }
+
+                Text(movie.overview)
+                    .font(.subheadline)
+                    .lineLimit(3)
             }
         }
         .padding(.vertical, 4)
     }
 }
+
