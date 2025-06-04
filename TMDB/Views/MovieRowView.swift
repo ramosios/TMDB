@@ -1,41 +1,30 @@
 import SwiftUI
 
-struct MovieRowView: View {
-    let movie: Movie
+struct MovieListSection: View {
+    let movies: [Movie]
 
     var body: some View {
-        HStack(alignment: .top, spacing: 16) {
-            if let url = movie.posterURL {
-                AsyncImage(url: url) { phase in
-                    switch phase {
-                    case .empty:
-                        ProgressView()
-                            .frame(width: 80, height: 120)
-                    case .success(let image):
-                        image
-                            .resizable()
-                            .scaledToFill()
-                            .frame(width: 80, height: 120)
-                            .clipped()
-                            .cornerRadius(8)
-                    case .failure:
-                        Color.gray
-                            .frame(width: 80, height: 120)
-                            .cornerRadius(8)
-                    @unknown default:
-                        EmptyView()
+        List(movies) { movie in
+            HStack(alignment: .top) {
+                if let url = movie.posterURL {
+                    AsyncImage(url: url) { phase in
+                        switch phase {
+                        case .success(let img):
+                            img.resizable().aspectRatio(contentMode: .fit)
+                        default:
+                            Color.gray
+                        }
                     }
+                    .frame(width: 80, height: 120)
+                    .cornerRadius(8)
+                }
+
+                VStack(alignment: .leading) {
+                    Text(movie.title).font(.headline)
+                    Text(movie.overview).font(.subheadline).lineLimit(3)
                 }
             }
-
-            VStack(alignment: .leading, spacing: 8) {
-                Text(movie.title)
-                    .font(.headline)
-                Text(movie.overview)
-                    .font(.subheadline)
-                    .lineLimit(3)
-            }
+            .padding(.vertical, 4)
         }
-        .padding(.vertical, 4)
     }
 }
