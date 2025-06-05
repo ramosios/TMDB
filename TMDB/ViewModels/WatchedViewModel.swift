@@ -25,9 +25,14 @@ class WatchedViewModel: ObservableObject {
         watched.contains(where: { $0.id == movie.id })
     }
     
+    func remove(_ movie: Movie) {
+        watched.removeAll { $0.id == movie.id }
+        saveWatched()
+    }
+    
     func clearAll() {
-            watched.removeAll()
-            saveWatched()
+        watched.removeAll()
+        saveWatched()
     }
 
     private func fileURL() -> URL {

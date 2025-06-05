@@ -33,12 +33,13 @@ struct MovieRowView: View {
                     .lineLimit(3)
 
                 HStack(spacing: 12) {
-                    // Favorite button
+                    // Favorite toggle
                     Button(action: {
                         if favorites.isFavorite(movie) {
                             favorites.remove(movie)
                         } else {
                             favorites.add(movie)
+                            watched.remove(movie) // ✅ remove from watched
                         }
                     }) {
                         Image(systemName: favorites.isFavorite(movie) ? "heart.fill" : "heart")
@@ -46,9 +47,12 @@ struct MovieRowView: View {
                     }
                     .buttonStyle(BorderlessButtonStyle())
 
-                    // Watched button
+                    // Watched toggle
                     Button(action: {
-                        watched.markAsWatched(movie)
+                        if !watched.isWatched(movie) {
+                            watched.markAsWatched(movie)
+                            favorites.remove(movie) // ✅ remove from favorites
+                        }
                     }) {
                         Text(watched.isWatched(movie) ? "✅ Watched" : "Mark Watched")
                             .font(.caption)
