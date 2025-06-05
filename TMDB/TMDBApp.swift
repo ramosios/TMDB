@@ -10,10 +10,13 @@ import SwiftUI
 @main
 struct TMDBApp: App {
     @StateObject private var favorites = FavoritesViewModel()
+    @StateObject private var watched = WatchedViewModel()
+
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environmentObject(favorites) 
+                .environmentObject(favorites)
+                .environmentObject(watched)
         }
     }
 }
