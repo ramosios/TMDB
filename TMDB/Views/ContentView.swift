@@ -7,8 +7,6 @@
 import Foundation
 import SwiftUI
 struct ContentView: View {
-    @StateObject var favorites = FavoritesViewModel()
-
     var body: some View {
         TabView {
             MovieListView()
@@ -20,7 +18,11 @@ struct ContentView: View {
                 .tabItem {
                     Label("Watchlist", systemImage: "heart.fill")
                 }
+
+            ProfileView()
+                .tabItem {
+                    Label("Profile", systemImage: "person.crop.circle")
+                }
         }
-        .environmentObject(favorites)
     }
 }

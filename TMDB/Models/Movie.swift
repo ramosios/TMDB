@@ -1,6 +1,6 @@
 import Foundation
 
-struct Movie: Identifiable, Decodable {
+struct Movie: Identifiable, Decodable, Encodable {
     let id: Int
     let title: String
     let overview: String
