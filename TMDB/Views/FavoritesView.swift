@@ -19,7 +19,7 @@ struct FavoritesView: View {
             } else {
                 List(favorites.favorites) { movie in
                     MovieRowView(movie: movie)
-                        .environmentObject(favorites) // ✅ Add this line
+                        .environmentObject(favorites) 
                 }
                 .navigationTitle("Watchlist")
             }
