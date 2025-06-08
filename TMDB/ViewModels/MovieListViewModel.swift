@@ -9,13 +9,13 @@ class MovieGPTViewModel: ObservableObject {
     private let openAIService = OpenAIService()
     private let tmdbService = TMDBService()
 
-    func getRecommendations(for prompt: String) async {
+    func getRecommendations(for prompt: String, avoiding moviesToAvoid: [Movie]) async {
         isLoading = true
         errorMessage = nil
         movies = []
 
         do {
-            let titles = try await openAIService.fetchMovieTitles(prompt: prompt)
+            let titles = try await openAIService.fetchMovieTitles(prompt: prompt, excluding: moviesToAvoid)
             self.movies = try await tmdbService.fetchMovies(for: titles)
         } catch let error as LocalizedError {
             self.errorMessage = error.errorDescription

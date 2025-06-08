@@ -27,10 +27,17 @@ enum OpenAIError: Error, LocalizedError {
 struct OpenAIService {
     let apiKey = Bundle.main.infoDictionary?["OPENAI_API_KEY"] as? String ?? ""
 
-    func fetchMovieTitles(prompt: String) async throws -> [String] {
+    func fetchMovieTitles(prompt: String, excluding moviesToAvoid: [Movie]) async throws -> [String] {
         guard !apiKey.isEmpty else {
             throw OpenAIError.missingAPIKey
         }
+
+        let avoidList = moviesToAvoid.map(\.title).filter { !$0.isEmpty }
+        let avoidText = avoidList.isEmpty ? "" :
+            "\nAvoid these movies as they've already been watched or added to my watchlist: " +
+            avoidList.prefix(30).joined(separator: ", ")
+
+        let fullPrompt = "Recommend 5 movies for the following prompt: \(prompt).\(avoidText)"
 
         let url = URL(string: "https://api.openai.com/v1/chat/completions")!
         var request = URLRequest(url: url)
@@ -40,10 +47,9 @@ struct OpenAIService {
 
         let body: [String: Any] = [
             "model": "gpt-3.5-turbo",
-            "messages": [["role": "user", "content": "Only respond with movie title for prompt: \(prompt)"]],
+            "messages": [["role": "user", "content": fullPrompt]],
             "temperature": 0.7
         ]
-
         request.httpBody = try JSONSerialization.data(withJSONObject: body)
 
         let (data, response) = try await URLSession.shared.data(for: request)
@@ -53,19 +59,14 @@ struct OpenAIService {
             throw OpenAIError.serverError(message)
         }
 
-        do {
-            let decoded = try JSONDecoder().decode(OpenAIResponse.self, from: data)
-            guard let content = decoded.choices.first?.message.content else {
-                throw OpenAIError.emptyChoices
-            }
-
-            return content
-                .components(separatedBy: "\n")
-                .compactMap { $0.components(separatedBy: ". ").last }
-                .filter { !$0.isEmpty }
-
-        } catch {
-            throw OpenAIError.decodingFailed
+        let decoded = try JSONDecoder().decode(OpenAIResponse.self, from: data)
+        guard let text = decoded.choices.first?.message.content else {
+            throw OpenAIError.emptyChoices
         }
+
+        return text
+            .components(separatedBy: "\n")
+            .compactMap { $0.components(separatedBy: ". ").last }
+            .filter { !$0.isEmpty }
     }
 }

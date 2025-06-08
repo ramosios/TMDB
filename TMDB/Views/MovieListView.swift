@@ -3,7 +3,9 @@ import SwiftUI
 struct MovieListView: View {
     @StateObject private var viewModel = MovieGPTViewModel()
     @State private var prompt = ""
-
+    @EnvironmentObject var favorites: FavoritesViewModel
+    @EnvironmentObject var watched: WatchedViewModel
+    
     var body: some View {
         NavigationView {
             VStack(spacing: 20) {
@@ -23,7 +25,8 @@ struct MovieListView: View {
 
                 Button(action: {
                     Task {
-                        await viewModel.getRecommendations(for: prompt)
+                        let avoiding = favorites.favorites + watched.watched
+                                await viewModel.getRecommendations(for: prompt, avoiding: avoiding)
                     }
                 }) {
                     Text("🎬 Get Recommendations")
