@@ -4,25 +4,31 @@
 //
 //  Created by Jorge Ramos on 04/06/25.
 //
-import Foundation
 import SwiftUI
+
 struct ContentView: View {
+    @State private var selectedTab: Tab = .home
+    @EnvironmentObject var favorites: FavoritesViewModel
+    @EnvironmentObject var watched: WatchedViewModel
+
     var body: some View {
-        TabView {
-            MovieListView()
-                .tabItem {
-                    Label("Discover", systemImage: "sparkles")
+        ZStack(alignment: .bottom) {
+            Group {
+                switch selectedTab {
+                case .home:
+                    MovieListView()
+                case .watchlist:
+                    WatchedMoviesView()
+                case .watched:
+                    FavoritesView()
+                case .profile:
+                    ProfileView()
                 }
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
 
-            FavoritesView()
-                .tabItem {
-                    Label("Watchlist", systemImage: "heart.fill")
-                }
-
-            ProfileView()
-                .tabItem {
-                    Label("Profile", systemImage: "person.crop.circle")
-                }
+            CustomTabBar(selectedTab: $selectedTab)
         }
+        .ignoresSafeArea(edges: .bottom)
     }
 }

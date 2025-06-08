@@ -1,9 +1,3 @@
-//
-//  PromptInputView.swift
-//  TMDB
-//
-//  Created by Jorge Ramos on 08/06/25.
-//
 import SwiftUI
 
 struct PromptInputView: View {
@@ -11,24 +5,36 @@ struct PromptInputView: View {
     let onSubmit: () -> Void
 
     var body: some View {
-        VStack(spacing: 12) {
-            TextEditor(text: $prompt)
-                .frame(height: 100)
-                .padding(8)
-                .background(Color(.secondarySystemBackground))
-                .cornerRadius(10)
-                .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.gray.opacity(0.3)))
+        VStack(spacing: 16) {
+            Text("Tell us what you're in the mood for:")
+                .font(.title3)
+                .fontWeight(.semibold)
+                .frame(maxWidth: .infinity, alignment: .leading)
+
+            ZStack(alignment: .topLeading) {
+                RoundedRectangle(cornerRadius: 12)
+                    .fill(Color(.secondarySystemBackground))
+                    .frame(height: 120)
+
+                TextEditor(text: $prompt)
+                    .padding(8)
+                    .frame(height: 120)
+                    .background(Color.clear)
+            }
 
             Button(action: onSubmit) {
-                Label("🎬 Get Recommendations", systemImage: "sparkles")
+                Label("Get Movie Recommendations", systemImage: "sparkles.tv.fill")
                     .font(.headline)
                     .frame(maxWidth: .infinity)
                     .padding()
-                    .background(Color.blue)
+                    .background(Color.indigo)
                     .foregroundColor(.white)
-                    .cornerRadius(10)
+                    .cornerRadius(12)
             }
         }
         .padding()
+        .background(Color.white)
+        .cornerRadius(16)
+        .shadow(color: Color.black.opacity(0.05), radius: 8, x: 0, y: 4)
     }
 }
