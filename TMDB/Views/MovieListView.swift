@@ -8,30 +8,25 @@ struct MovieListView: View {
 
     var body: some View {
         NavigationView {
-            ScrollView {
-                VStack(spacing: 24) {
-                    PromptInputView(prompt: $prompt) {
-                        Task {
-                            let avoid = favorites.favorites + watched.watched
-                            await viewModel.getRecommendations(for: prompt, avoiding: avoid)
-                        }
-                    }
-
-                    if let error = viewModel.errorMessage {
-                        ErrorBanner(message: error)
-                    }
-
-                    if viewModel.isLoading {
-                        LoadingView()
-                    } else {
-                        MovieListSection(movies: viewModel.movies)
+            VStack {
+                PromptInputView(prompt: $prompt) {
+                    Task {
+                        let avoid = favorites.favorites + watched.watched
+                        await viewModel.getRecommendations(for: prompt, avoiding: avoid)
                     }
                 }
-                .padding()
-                .background(Color(.systemGroupedBackground))
+
+                if let error = viewModel.errorMessage {
+                    ErrorBanner(message: error)
+                }
+
+                if viewModel.isLoading {
+                    LoadingView()
+                } else {
+                    MovieListSection(movies: viewModel.movies)
+                }
             }
-            .navigationTitle("🍿 MovieGPT")
-            .navigationBarTitleDisplayMode(.inline)
+            .navigationTitle("MovieGPT")
         }
     }
 }
