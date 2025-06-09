@@ -10,9 +10,19 @@ struct MovieListSection: View {
     let movies: [Movie]
 
     var body: some View {
-        List(movies) { movie in
-            MovieRowView(movie: movie)
+        ScrollView {
+            LazyVStack(alignment: .leading, spacing: 0) {
+                ForEach(movies) { movie in
+                    NavigationLink(destination:
+                        MovieDetailView(movie: movie)
+                    ) {
+                        MovieRowView(movie: movie)
+                            .padding(.horizontal)
+                            .padding(.vertical, 4)
+                    }
+                    .buttonStyle(PlainButtonStyle()) 
+                }
+            }
         }
-        .listStyle(.plain)
     }
 }

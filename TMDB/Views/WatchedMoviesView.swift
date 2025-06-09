@@ -10,11 +10,7 @@ struct WatchedMoviesView: View {
     @EnvironmentObject var watched: WatchedViewModel
 
     var body: some View {
-        NavigationView {
-            List(watched.watched) { movie in
-                MovieRowView(movie: movie)
-            }
+        MovieListSection(movies:watched.watched)
             .navigationTitle("Watched")
-        }
     }
 }

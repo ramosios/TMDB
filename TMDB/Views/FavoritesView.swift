@@ -17,10 +17,7 @@ struct FavoritesView: View {
                     .padding()
                     .navigationTitle("Watchlist")
             } else {
-                List(favorites.favorites) { movie in
-                    MovieRowView(movie: movie)
-                        .environmentObject(favorites) 
-                }
+                MovieListSection(movies:favorites.favorites)
                 .navigationTitle("Watchlist")
             }
         }
