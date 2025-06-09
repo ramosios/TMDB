@@ -28,9 +28,46 @@ struct MovieRowView: View {
                 Text(movie.title)
                     .font(.headline)
 
-                Text(movie.overview)
-                    .font(.subheadline)
-                    .lineLimit(3)
+                // POPULARITY & VOTE AVERAGE
+                HStack {
+                    if let popularity = movie.popularity {
+                            if popularity >= 100 {
+                                // Blockbuster badge
+                                HStack(spacing: 2) {
+                                    Image(systemName: "star.fill")
+                                    Text("Blockbuster")
+                                }
+                                .font(.caption2)
+                                .padding(.horizontal, 6)
+                                .padding(.vertical, 2)
+                                .background(Color.red.opacity(0.15))
+                                .foregroundColor(.red)
+                                .cornerRadius(8)
+                            } else if popularity >= 50 {
+                                // Trending badge
+                                HStack(spacing: 2) {
+                                    Image(systemName: "flame.fill")
+                                    Text("Trending")
+                                }
+                                .font(.caption2)
+                                .padding(.horizontal, 6)
+                                .padding(.vertical, 2)
+                                .background(Color.orange.opacity(0.15))
+                                .foregroundColor(.orange)
+                                .cornerRadius(8)
+                            }
+                        }
+                    Text("⭐️ \(movie.voteAverage?.formatted() ?? "-")")
+                        .font(.caption)
+                        .foregroundColor(.yellow)
+                }
+
+                // Optionally, add release date here
+                if let date = movie.releaseDate {
+                    Text("Release: \(date)")
+                        .font(.caption2)
+                        .foregroundColor(.secondary)
+                }
 
                 HStack(spacing: 12) {
                     // Favorite toggle

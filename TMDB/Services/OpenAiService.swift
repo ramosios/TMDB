@@ -37,7 +37,7 @@ struct OpenAIService {
             "\nAvoid these movies as they've already been watched or added to my watchlist: " +
             avoidList.prefix(30).joined(separator: ", ")
 
-        let fullPrompt = "Recommend 5 movies for the following prompt: \(prompt).\(avoidText)"
+        let fullPrompt = "Recommend up tp 5 movies for the following prompt just give movie title: \(prompt).\(avoidText)"
 
         let url = URL(string: "https://api.openai.com/v1/chat/completions")!
         var request = URLRequest(url: url)
