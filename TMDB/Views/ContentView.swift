@@ -4,25 +4,29 @@
 //
 //  Created by Jorge Ramos on 04/06/25.
 //
-import Foundation
 import SwiftUI
+
 struct ContentView: View {
+    @State private var selectedTab: TabBarItem = .discover
+
     var body: some View {
-        TabView {
-            MovieListView()
-                .tabItem {
-                    Label("Discover", systemImage: "sparkles")
-                }
+        VStack(spacing: 0) {
+            ZStack {
+                MovieListView()
+                    .opacity(selectedTab == .discover ? 1 : 0)
+                    .allowsHitTesting(selectedTab == .discover)
 
-            FavoritesView()
-                .tabItem {
-                    Label("Watchlist", systemImage: "heart.fill")
-                }
+                FavoritesView()
+                    .opacity(selectedTab == .watchlist ? 1 : 0)
+                    .allowsHitTesting(selectedTab == .watchlist)
 
-            ProfileView()
-                .tabItem {
-                    Label("Profile", systemImage: "person.crop.circle")
-                }
+                ProfileView()
+                    .opacity(selectedTab == .profile ? 1 : 0)
+                    .allowsHitTesting(selectedTab == .profile)
+            }
+
+            CustomTabBar(selectedTab: $selectedTab)
         }
+        .ignoresSafeArea(edges: .bottom)
     }
 }
