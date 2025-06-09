@@ -73,7 +73,7 @@ struct MovieRowView: View {
                             favorites.remove(movie)
                         } else {
                             favorites.add(movie)
-                            watched.remove(movie) // ✅ remove from watched
+                            watched.remove(movie) // remove from watched
                         }
                     }) {
                         Image(systemName: favorites.isFavorite(movie) ? "heart.fill" : "heart")
