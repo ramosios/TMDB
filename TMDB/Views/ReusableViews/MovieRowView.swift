@@ -31,7 +31,7 @@ struct MovieRowView: View {
                 // POPULARITY & VOTE AVERAGE
                 HStack {
                     if let popularity = movie.popularity {
-                            if popularity >= 100 {
+                            if popularity >= 80 {
                                 // Blockbuster badge
                                 HStack(spacing: 2) {
                                     Image(systemName: "star.fill")
@@ -43,7 +43,7 @@ struct MovieRowView: View {
                                 .background(Color.red.opacity(0.15))
                                 .foregroundColor(.red)
                                 .cornerRadius(8)
-                            } else if popularity >= 50 {
+                            } else if popularity >= 35 {
                                 // Trending badge
                                 HStack(spacing: 2) {
                                     Image(systemName: "flame.fill")
