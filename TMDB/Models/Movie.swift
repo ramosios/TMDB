@@ -24,3 +24,24 @@ struct Movie: Identifiable, Decodable, Encodable {
 struct MovieSearchResponse: Decodable {
     let results: [Movie]
 }
+
+extension Movie {
+    var formattedVoteAverage: String {
+        if let voteAverage = voteAverage {
+            return String(format: "%.1f", voteAverage)
+        } else {
+            return "-"
+        }
+    }
+    var formattedReleaseDate: String {
+        guard let releaseDate = releaseDate else { return "-" }
+        let inputFormatter = DateFormatter()
+        inputFormatter.dateFormat = "yyyy-MM-dd"
+        if let date = inputFormatter.date(from: releaseDate) {
+            let outputFormatter = DateFormatter()
+            outputFormatter.dateStyle = .medium // e.g. "Mar 24, 2023"
+            return outputFormatter.string(from: date)
+        }
+        return releaseDate
+    }
+}

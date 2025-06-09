@@ -57,17 +57,14 @@ struct MovieRowView: View {
                                 .cornerRadius(8)
                             }
                         }
-                    Text("⭐️ \(movie.voteAverage?.formatted() ?? "-")")
+                    Text("⭐️ \(movie.formattedVoteAverage)")
                         .font(.caption)
                         .foregroundColor(.yellow)
                 }
-
-                // Optionally, add release date here
-                if let date = movie.releaseDate {
-                    Text("Release: \(date)")
+                // Release date
+                    Text("Release: \(movie.formattedReleaseDate)")
                         .font(.caption2)
                         .foregroundColor(.secondary)
-                }
 
                 HStack(spacing: 12) {
                     // Favorite toggle
