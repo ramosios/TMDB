@@ -31,7 +31,8 @@ struct TMDBService {
         for title in titles {
             let encoded = title.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
             guard let url = URL(string: "https://api.themoviedb.org/3/search/movie?api_key=\(apiKey)&query=\(encoded)") else {
-                throw TMDBError.invalidURL(title)
+                print("Invalid URL for title: \(title)")
+                continue
             }
 
             do {
@@ -39,20 +40,23 @@ struct TMDBService {
 
                 if let httpResponse = response as? HTTPURLResponse, !(200...299).contains(httpResponse.statusCode) {
                     let message = String(data: data, encoding: .utf8) ?? "Unknown error"
-                    throw TMDBError.requestFailed(message)
+                    print("Request failed for title \(title): \(message)")
+                    continue
                 }
 
                 let result = try JSONDecoder().decode(MovieSearchResponse.self, from: data)
                 if let first = result.results.first {
                     all.append(first)
                 } else {
-                    throw TMDBError.noResults(title)
+                    print("No movie found for title: \(title)")
                 }
 
             } catch is DecodingError {
-                throw TMDBError.decodingFailed
+                print("Decoding error for title: \(title)")
+                continue
             } catch {
-                throw TMDBError.requestFailed(error.localizedDescription)
+                print("Error fetching movie for title \(title): \(error.localizedDescription)")
+                continue
             }
         }
 
