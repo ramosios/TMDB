@@ -52,7 +52,7 @@ struct ProfileView: View {
                         }
                         NavigationLink(destination: UserPreferenceView()) {
                             HStack {
-                                Image(systemName: "eye.fill")
+                                Image(systemName: "theatermasks")
                                 Text("Movie Preferences")
                                 Spacer()
                                 Image(systemName: "chevron.right")

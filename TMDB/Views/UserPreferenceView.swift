@@ -15,9 +15,9 @@ struct UserPreferenceView: View {
     ]
 
     let options = [
-        ["Action", "Comedy", "Drama", "Sci-Fi"],
-        ["Daily", "Weekly", "Monthly"],
-        ["Action", "Drama"]
+        ["","Action", "Comedy", "Drama", "Sci-Fi"],
+        ["","Daily", "Weekly", "Monthly"],
+        ["","Action", "Drama"]
     ]
 
     var body: some View {
@@ -25,7 +25,13 @@ struct UserPreferenceView: View {
             Form {
                 Section(header: Text("Your Preferences")) {
                     ForEach(0..<questions.count, id: \.self) { index in
-                        Picker(questions[index], selection: $preferencesVM.selectedAnswers[index]) {
+                        Picker(questions[index], selection: Binding(
+                            get: {
+                                let current = preferencesVM.selectedAnswers[index]
+                                return options[index].contains(current) ? current : options[index][0] // fallback
+                            },
+                            set: { preferencesVM.selectedAnswers[index] = $0 }
+                        )) {
                             ForEach(options[index], id: \.self) { option in
                                 Text(option).tag(option)
                             }
