@@ -38,7 +38,7 @@ struct UserPreferenceView: View {
                     preferencesVM.saveAnswers()
                 }
             }
-            .navigationTitle("Profile")
+            .navigationTitle("Movie Preferences")
             .onAppear {
                 preferencesVM.loadAnswers()
             }

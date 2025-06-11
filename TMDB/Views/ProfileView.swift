@@ -15,7 +15,6 @@ struct ProfileView: View {
         NavigationView {
             ScrollView {
                 VStack(spacing: 24) {
-
                     // Profile header
                     VStack(spacing: 12) {
                         Image(systemName: "person.crop.circle.fill")
@@ -43,6 +42,18 @@ struct ProfileView: View {
                             HStack {
                                 Image(systemName: "eye.fill")
                                 Text("View Watched Movies")
+                                Spacer()
+                                Image(systemName: "chevron.right")
+                            }
+                            .padding()
+                            .background(Color.blue.opacity(0.1))
+                            .foregroundColor(.blue)
+                            .cornerRadius(12)
+                        }
+                        NavigationLink(destination: UserPreferenceView()) {
+                            HStack {
+                                Image(systemName: "eye.fill")
+                                Text("Movie Preferences")
                                 Spacer()
                                 Image(systemName: "chevron.right")
                             }
