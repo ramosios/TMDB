@@ -11,12 +11,14 @@ import SwiftUI
 struct TMDBApp: App {
     @StateObject private var favorites = FavoritesViewModel()
     @StateObject private var watched = WatchedViewModel()
+    @StateObject private var userPreferences = UserPreferencesViewModel()
 
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .environmentObject(favorites)
                 .environmentObject(watched)
+                .environmentObject(userPreferences)
         }
     }
 }

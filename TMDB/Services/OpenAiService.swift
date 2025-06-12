@@ -27,17 +27,18 @@ enum OpenAIError: Error, LocalizedError {
 struct OpenAIService {
     let apiKey = Bundle.main.infoDictionary?["OPENAI_API_KEY"] as? String ?? ""
 
-    func fetchMovieTitles(prompt: String, excluding moviesToAvoid: [Movie]) async throws -> [String] {
+    func fetchMovieTitles(prompt: String,userPreferences: [String], excluding moviesToAvoid: [Movie]) async throws -> [String] {
         guard !apiKey.isEmpty else {
             throw OpenAIError.missingAPIKey
         }
-
+        
+        let preferenceText = formatPreferences(userPreferences)
         let avoidList = moviesToAvoid.map(\.title).filter { !$0.isEmpty }
         let avoidText = avoidList.isEmpty ? "" :
             "\nAvoid these movies as they've already been watched or added to my watchlist: " +
             avoidList.prefix(30).joined(separator: ", ")
 
-        let fullPrompt = "Recommend up tp 5 movies for the following prompt just give movie title: \(prompt).\(avoidText)"
+        let fullPrompt = "Recommend up tp 5 movies for the following prompt just give movie title: \(prompt).\n\(preferenceText)\(avoidText)"
 
         let url = URL(string: "https://api.openai.com/v1/chat/completions")!
         var request = URLRequest(url: url)

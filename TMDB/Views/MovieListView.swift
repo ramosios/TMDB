@@ -4,6 +4,7 @@ struct MovieListView: View {
     @StateObject private var viewModel = MovieGPTViewModel()
     @EnvironmentObject var favorites: FavoritesViewModel
     @EnvironmentObject var watched: WatchedViewModel
+    @EnvironmentObject var userPreferences: UserPreferencesViewModel
     @State private var prompt = ""
 
     var body: some View {
@@ -12,7 +13,8 @@ struct MovieListView: View {
                 PromptInputView(prompt: $prompt) {
                     Task {
                         let avoid = favorites.favorites + watched.watched
-                        await viewModel.getRecommendations(for: prompt, avoiding: avoid)
+                        let userPreferences = userPreferences.selectedAnswers
+                        await viewModel.getRecommendations(for: prompt, userPreferences: userPreferences, avoiding: avoid)
                     }
                 }
 

@@ -9,7 +9,10 @@ class UserPreferencesViewModel: ObservableObject {
     @Published var selectedAnswers: [String] = ["", "", ""]
 
     private let fileName = "user_preferences.json"
-
+    
+    init() {
+        loadAnswers()
+    }
     func saveAnswers() {
         let preferences = UserPreferences(answers: selectedAnswers)
         if let data = try? JSONEncoder().encode(preferences),
