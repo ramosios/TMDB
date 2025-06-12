@@ -9,15 +9,15 @@ struct UserPreferenceView: View {
     @StateObject private var preferencesVM = UserPreferencesViewModel()
 
     let questions = [
-        "What's your favorite genre?",
+        "Do you prefer fast-paced or slow-burn stories??",
         "How often do you watch movies?",
-        "Do you prefer action or drama?"
+        "Are you more into new releases or older films?"
     ]
 
     let options = [
-        ["","Action", "Comedy", "Drama", "Sci-Fi"],
+        ["","fast-paced", "slow-burn"],
         ["","Daily", "Weekly", "Monthly"],
-        ["","Action", "Drama"]
+        ["","new releases", "older films"]
     ]
 
     var body: some View {
